@@ -75,9 +75,6 @@ const Footer = () => {
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-salt-blue">Contact Us</Link>
               </li>
-              <li>
-                <Link to="/admin" className="text-gray-300 hover:text-salt-blue">Admin Panel</Link>
-              </li>
             </ul>
           </div>
 
