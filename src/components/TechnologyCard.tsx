@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Atom, Server, FileCode, Cloud, Smartphone } from 'lucide-react';
+import { Atom, Server, FileCode, Cloud, Smartphone, ArrowRight } from 'lucide-react';
 import { Technology } from '@/types';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
 
 interface TechnologyCardProps {
   technology: Technology;
@@ -27,13 +29,19 @@ const TechnologyCard: React.FC<TechnologyCardProps> = ({ technology }) => {
   };
 
   return (
-    <Card className="transition-all duration-300 hover:shadow-lg">
+    <Card className="transition-all duration-300 hover:shadow-lg h-full flex flex-col">
       <CardHeader className="flex flex-row items-center gap-4">
         {getIcon(technology.icon)}
         <h3 className="font-semibold">{technology.name}</h3>
       </CardHeader>
-      <CardContent>
-        <p className="text-sm text-gray-600">{technology.description}</p>
+      <CardContent className="flex-grow flex flex-col justify-between">
+        <p className="text-sm text-gray-600 mb-4">{technology.description}</p>
+        <Link to={`/technologies/${technology.id}`}>
+          <Button variant="ghost" className="p-0 hover:bg-transparent text-salt-blue hover:text-salt-darkBlue flex items-center gap-2">
+            Learn More
+            <ArrowRight size={16} />
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );
