@@ -12,15 +12,10 @@ import { useRegion } from '@/context/RegionContext';
 const Index = () => {
   const { currentRegion } = useRegion();
   
-  // Filter case studies by region or show all if none available for the current region
-  const filteredCaseStudies = caseStudies
-    .filter(study => study.region === currentRegion)
-    .slice(0, 3);
-  
-  // Fallback to first 3 case studies if none available for the current region
-  const displayCaseStudies = filteredCaseStudies.length > 0 
-    ? filteredCaseStudies 
-    : caseStudies.slice(0, 3);
+  // Filter case studies by region
+  const filteredCaseStudies = caseStudies.filter(
+    study => study.region === currentRegion
+  ).slice(0, 3);
 
   return (
     <div>
@@ -64,7 +59,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayCaseStudies.map((caseStudy) => (
+            {filteredCaseStudies.map((caseStudy) => (
               <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
             ))}
           </div>
